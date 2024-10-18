@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+
+    <h1 class="text-center text-primary display-3"> JSON Product CRUD </h1>
+    <div class="container col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group my-3">
+                            <input type="text" id="name" placeholder="Product Name " class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group my-3">
+                            <select class="form-control" id="category">
+                                <option disabled selected value="">-- Select Category -- </option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Kidds">Kidds</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="cost_inputs" class="row">
+                        <h6 class="text-center"> Product Cost </h6>
+                        <div class="col-md-2">
+                            <div class="form-group my-3">
+                                <input type="number" placeholder="Cost" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group my-3">
+                                <input type="number" placeholder="%Tax" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group my-3">
+                                <input type="number" placeholder="my_return" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group my-3">
+                                <input type="number" placeholder="%Discount" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group my-3">
+                                <input type="number" red placeholder="Sales Cost" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group my-3">
+                                <input type="number" readonly placeholder="Net Profit " class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group my-3">
+                                <input type="text" id="counts" placeholder="Rows Counts " class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group my-3">
+                                <input type="url" id="MyImage" placeholder="Image Url" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid">
+                    <button id="addProductBtn" class="btn btn-info">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-4 mx-auto">
+        <hr>
+    </div>
+
+
+    <h1 class="text-center text-success display-5"> Your Tasks
+
+
+    </h1>
+    <div class="container mt-5  col-md-10">
+        <div class="card">
+            <div class="card-body">
+                <div id="empty_tasks">
+                    <div class="alert alert-danger">
+                        No Products Yet
+                    </div>
+                </div>
+                <div id="products_div" class="product  ">
+                    <div class="d-grid">
+                        <button id="clearAllBtn" class="btn btn-danger my-3">Clear All </button>
+                    </div>
+
+                    <table class="table">
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Category </th>
+                            <th colspan="3">Action</th>
+                        </tr>
+
+                        <tbody id="tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="layout" id="layout">
+
+    </div>
+
+
+
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
