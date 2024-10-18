@@ -1,19 +1,93 @@
+let inputs = document.querySelectorAll("input");
+let span = document.querySelectorAll("span");
+
 let addProductBtn = document.getElementById("addProductBtn");
 let product_name = document.getElementById("name");
 let category = document.getElementById("category");
 let cost_inputs = document.querySelectorAll("#cost_inputs input");
 let counts = document.getElementById("counts");
-// let image = document.getElementById("MyImage");
+let image = document.getElementById("MyImage");
 // Tables Data 
 let empty_tasks = document.getElementById("empty_tasks");
 let products_div = document.getElementById("products_div");
 let tbody = document.getElementById("tbody");
 let clearAllBtn = document.getElementById("clearAllBtn");
 let layout = document.getElementById("layout");
- 
+let rest = document.getElementById("rest");
 
 let globalId;
 let mood = 'create';
+
+let errors = ['is in valid'];
+let errorNumber = ['is invalid']
+console.log(cost_inputs);
+
+
+let checkValidationNumber = () => {
+    for (let i = 0; i < cost_inputs.length; i++) {
+        if (parseFloat(cost_inputs[i].value) < 0 || typeof (cost_inputs[i]) == 'number') {
+            errorNumber.push(`Error Number in this ${cost_inputs[i].getAttribute('id')}`);
+            console.log(errorNumber);
+        } else {
+            errorNumber.splice(0);
+            console.log(errorNumber);
+
+        }
+    }
+}
+
+for (let x = 0; x < cost_inputs.length; x++) {
+    cost_inputs[x].addEventListener("change", checkValidationNumber);
+}
+
+
+let checkValidation = () => {
+    for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value.length == 0) {
+
+            errors.push(`Error in this ${inputs[i].getAttribute('id')}`);
+        } else {
+            errors.splice(0);
+        }
+    }
+}
+for (let x = 0; x < inputs.length; x++) {
+    inputs[x].addEventListener("change", checkValidation);
+}
+
+
+for (let m = 0; m < inputs.length; m++) {
+
+    inputs[m].addEventListener("keyup", function () {
+        if (inputs[m].value.length == 0) {
+            inputs[m].classList.add("invalid");
+            span[m].style.display = 'block';
+            span[m].innerHTML = `In valid value ${inputs[m].getAttribute('id')}`
+        } else {
+            span[m].style.display = 'none';
+            inputs[m].classList.remove("invalid");
+        }
+    });
+}
+
+
+
+for (let m = 0; m < cost_inputs.length; m++) {
+
+    cost_inputs[m].addEventListener("keyup", function () {
+        if (parseFloat(cost_inputs[m].value) < 0 || typeof (cost_inputs[m]) == 'number') {
+            cost_inputs[m].classList.add("invalid");
+            span[m].style.display = 'block';
+            span[m].innerHTML = `In valid value ${cost_inputs[m].getAttribute('id')}`
+        } else {
+            span[m].style.display = 'none';
+            span[m].classList.remove("invalid");
+        }
+    });
+}
+
+
+// ===================================
 if (localStorage.myProducts == null) {
     all_product = []
 } else {
@@ -71,6 +145,7 @@ let resetInputs = () => {
     cost_inputs[3].value = "";
     cost_inputs[4].value = "";
     cost_inputs[5].value = "";
+    counts.value = "";
     image.value = "";
 }
 
@@ -88,27 +163,30 @@ let create_object = () => {
         image: image.value,
     }
 
-    if (mood == 'create') {
-        if (counts.value <= 0) {
-            all_product.push(new_product);
-        } else {
-            for (let i = 1; i <= counts.value; i++) {
+    if (errors.length == 0 && errorNumber.length == 0) {
+        if (mood == 'create') {
+            if (counts.value <= 0) {
                 all_product.push(new_product);
+            } else {
+                for (let i = 1; i <= counts.value; i++) {
+                    all_product.push(new_product);
+                }
             }
-        }
-    } else {
-        all_product[globalId] = new_product;
-        counts.disabled = false;
-        addProductBtn.innerHTML = `Add Product `;
-        addProductBtn.classList.replace("btn-warning", 'btn-info');
-        mood = 'create';
+        } else {
+            all_product[globalId] = new_product;
+            counts.disabled = false;
+            addProductBtn.innerHTML = `Add Product `;
+            addProductBtn.classList.replace("btn-warning", 'btn-info');
+            mood = 'create';
 
+        }
+
+        localStorage.setItem("myProducts", JSON.stringify(all_product));
+        show_data();
+        checkEmpty();
+        resetInputs();
     }
 
-    localStorage.setItem("myProducts", JSON.stringify(all_product));
-    show_data();
-    checkEmpty();
-    resetInputs();
 }
 addProductBtn.addEventListener("click", create_object);
 // ---------------------------------------------------------
@@ -205,7 +283,9 @@ let update = (i) => {
     cost_inputs[5].value = all_product[i].net_profit;
     image.value = all_product[i].image;
     counts.disabled = true;
-    addProductBtn.innerHTML = `Update Product ${i  +1}`;
+    addProductBtn.innerHTML = `Update Product ${i + 1}`;
     addProductBtn.classList.replace("btn-info", 'btn-warning');
 }
 
+
+rest.addEventListener("click", resetInputs);

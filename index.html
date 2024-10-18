@@ -12,7 +12,7 @@
 
 <body>
 
-
+ 
     <h1 class="text-center text-primary display-3"> JSON Product CRUD </h1>
     <div class="container col-md-8">
         <div class="card">
@@ -20,13 +20,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group my-3">
-                            <input type="text" id="name" placeholder="Product Name " class="form-control">
+                            <input type="text" id="name" placeholder="Product Name" class="form-control">
+                            <span class="none">  </span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group my-3">
                             <select class="form-control" id="category">
-                                <option disabled selected value="">-- Select Category -- </option>
+                                <option disabled selected  >-- Select Category -- </option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Kidds">Kidds</option>
@@ -39,32 +40,38 @@
                         <h6 class="text-center"> Product Cost </h6>
                         <div class="col-md-2">
                             <div class="form-group my-3">
-                                <input type="number" placeholder="Cost" class="form-control">
+                                <input type="number" placeholder="Cost" id="cost" class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group my-3">
-                                <input type="number" placeholder="%Tax" class="form-control">
+                                <input type="number" placeholder="%Tax" id="Tax" class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group my-3">
-                                <input type="number" placeholder="my_return" class="form-control">
+                                <input type="number" placeholder="my_return"  id="my_return" class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group my-3">
-                                <input type="number" placeholder="%Discount" class="form-control">
+                                <input type="number" placeholder="%Discount"  id="Discount" class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group my-3">
-                                <input type="number" red placeholder="Sales Cost" class="form-control">
+                                <input type="number"  readonly placeholder="Sales Cost" id="Sales Cost" class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group my-3">
-                                <input type="number" readonly placeholder="Net Profit " class="form-control">
+                                <input type="number" readonly placeholder="Net Profit " id="Profit" class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                     </div>
@@ -72,19 +79,32 @@
                         <div class="col-md-6">
                             <div class="form-group my-3">
                                 <input type="text" id="counts" placeholder="Rows Counts " class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group my-3">
                                 <input type="url" id="MyImage" placeholder="Image Url" class="form-control">
+                                <span class="none">  </span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="d-grid">
-                    <button id="addProductBtn" class="btn btn-info">Add Product</button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-grid">
+                            <button id="addProductBtn" class="btn btn-info">Add Product</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="d-grid">
+                            <button id="rest" class="btn btn-warning">Rest Data</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

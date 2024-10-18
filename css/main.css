@@ -5,16 +5,18 @@ body {
     color: white;
 }
 
-.card{
-padding: 20px;
-background-color: rgb(13, 20, 22);
-color: white;
-}
-.card-body{
+.card {
     padding: 20px;
-background-color: rgb(20, 30, 33);
-color: white;
+    background-color: rgb(13, 20, 22);
+    color: white;
 }
+
+.card-body {
+    padding: 20px;
+    background-color: rgb(20, 30, 33);
+    color: white;
+}
+
 .none {
     display: none;
 }
@@ -43,9 +45,10 @@ i:hover {
     background-color: gray;
     text-decoration: line-through;
 }
+
  
- 
-.layout{
+
+.layout {
     /* dis */
 
     width: 100%;
@@ -58,4 +61,13 @@ i:hover {
     display: none;
     justify-content: space-around;
     align-items: center;
+}
+
+
+.invalid {
+    border: 1px solid red;
+}
+
+span {
+    color: rgb(226, 122, 122);
 }
